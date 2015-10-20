@@ -47,4 +47,4 @@ getMalnutrition <- function(x){
   
 }
 
-namesMalnutrition <- c("MUAC Vert", "MUAC Jaune", "MUAC Orage", "MUAC Rouge", "Total Oedeme", "Total Malnutrion sÃ©vÃ¨re", "Nb de patients malnutris ayant reçu référence", "% de patients malnutris traités correctement")
+namesMalnutrition <- c("MUAC Vert", "MUAC Jaune", "MUAC Orage", "MUAC Rouge", "Total Oedème", "Total Malnutrion sévère", "Nb de patients malnutris ayant reçu référence", "% de patients malnutris traités correctement")

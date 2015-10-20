@@ -59,4 +59,4 @@ getDiarrhea <- function(x){
   
 }
 
-namesDiarrhea <- c("Total DiarrhÃ©es pour < 5 ans", "Total DiarrhÃ©es pour > 5 ans", "Total DiarrhÃ©es", "Total ORS distribuÃ©s", "Total Patients ayant reÃ§u ORS", "Nb de patients avec diarrhÃ©e ayant reÃ§u ORS", "% de patients avec diarrhÃ©e traitÃ©s correctement")
+namesDiarrhea <- c("Total Diarrhées pour < 5 ans", "Total Diarrhées pour > 5 ans", "Total Diarrhées", "Total ORS distribués", "Total Patients ayant reÃ§u ORS", "Nb de patients avec diarrhée ayant reçu ORS", "% de patients avec diarrhée traités correctement")

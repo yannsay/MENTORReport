@@ -1,6 +1,6 @@
 ####################################################
 #Script to get the information about Malaria cases #
-##############################################
+####################################################
 
 getPalu <- function(x){
   #Creating Reporting values

@@ -4,6 +4,7 @@ source("getPalu.R")
 source("getPaluTreatment.R")
 source("getDiarrhea.R")
 source("getMalnutrition.R")
+source("getRupture.R")
 
 createLine <- function(x){
   lineReport <<- c()
@@ -13,12 +14,13 @@ createLine <- function(x){
   getPaluTreatment(x)
   getDiarrhea(x)
   getMalnutrition(x)
+  getRupture(x)
   
   MENTORReport <<- rbind(MENTORReport, lineReport)
   
 }
 
-# data <- data[which(data$DateViste > "01/07/2015" & data$DateViste < "15/07/2015"),]
+# data[which(data$DateViste >= as.Date("1/07/2015", "%d/%m/%Y") & data$DateViste <= as.Date("31/07/2015", "%d/%m/%Y")) ,]
 
 #Report Total
 ##MENTOR Report Total
@@ -39,7 +41,7 @@ interaction(data$monthCategory, data$VillageASC)
 monthByVillage<- split(data, list(data$monthCategory, data$VillageASC))
 lapply(monthByVillage, createLine)
 
-columnsNames <- c(namesDemography, namesPalu, namesPaluTreatment, namesDiarrhea, namesMalnutrition)
+columnsNames <- c(namesDemography, namesPalu, namesPaluTreatment, namesDiarrhea, namesMalnutrition, namesRupture)
 names(MENTORReport) <- columnsNames
 
 rowTitle <- c("total", names(byVillage), names(monthGroup), names(monthByVillage))
@@ -51,4 +53,3 @@ print(MENTORReport)
 write.csv2(MENTORReport, "../data/MENTORReporttest.csv")
 write.csv2(data, "../data/data for analysis.csv")
 cat("Rapport fini")
-
