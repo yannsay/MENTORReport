@@ -40,7 +40,7 @@ data[, 2:ncol(data)][data[, 2:ncol(data)] == 99] <- NA
 data$Sexe <- as.factor(data$Sexe)
 data$MUAC <- as.factor(data$MUAC)
 data$Transfert <- as.factor(data$Transfert)
-data$DateViste <- as.Date(data$DateViste, "%d/%m/%Y") #Changer le nom aprÃ¨s modification de Epi Info
+data$DateViste <- as.Date(data$DateViste, "%d/%m/%Y") #Changer le nom après modification de Epi Info
 
 #Adding value for the month selection
 ##Creating variables: month and year categories
