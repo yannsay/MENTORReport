@@ -1,6 +1,10 @@
 ######################################################
 #Script pour avoir les informations sur les ruptures #
 ######################################################
+
+
+######### Revoir pour les médocs (incluts CPN)
+
 #Fonction pour savoir s'il y a rupture
 rupture <- function(x, medicament){
   #Variables pour le comptage
@@ -18,15 +22,15 @@ rupture <- function(x, medicament){
         #Conditions pour les ruptures
         ## Première rupture
         if(x2[i,medicament2] == 88 & compteurRupture == 0) {
-          dateRupture <- x2[i, "DateViste"]
+          dateRupture <- x2[i, "dateVisite"]
           compteurRupture <- compteurRupture + 1
         }
         
         ## Deuxième rupture date différente
-        if(x2[i,medicament2] == "88" & compteurRupture > 0 & x2[i, "DateViste"] > dateRupture) {
-          incrementationRupture <- as.integer(x2[i, "DateViste"] - dateRupture)
+        if(x2[i,medicament2] == "88" & compteurRupture > 0 & x2[i, "dateVisite"] > dateRupture) {
+          incrementationRupture <- as.integer(x2[i, "dateVisite"] - dateRupture)
           compteurRupture <- compteurRupture + incrementationRupture
-          dateRupture <- x2[i, "DateViste"]
+          dateRupture <- x2[i, "dateVisite"]
         }
         
         ## rupture > 7 jours
@@ -45,11 +49,11 @@ rupture <- function(x, medicament){
     totalRupture <<- totalRupture + stockout
   }
   #Ranger par ordre date
-  x[order(x$DateViste),]
+  x[order(x$dateVisite),]
   
   #Séparation par villages/mois
-  interaction(x$monthCategory, x$VillageASC)
-  monthByVillage<- split(x, list(x$monthCategory, x$VillageASC))
+  interaction(x$mois, x$villageASC)
+  monthByVillage<- split(x, list(x$mois, x$villageASC))
   
   #Loop a travers les villages/mois
   lapply(monthByVillage,comptageRupture, medicament2 = medicament) 
@@ -59,7 +63,7 @@ rupture <- function(x, medicament){
 #Fonction pour vérifier les ruptures pour chaque médicaments
 ##Variables pour le rapport
 rupturePart <- c()
-listeMedicament <- c("Coartem0515", "Coartem1525", "Coartem2535", "Coartem35", "Artenether", "SRO", "Albendazole", "Vitamines100000UI", "Vitamines200000UI", "Paractamol", "MILD", "Kit")
+listeMedicament <- c("coartem0515", "coartem1525", "coartem2535", "coartem35", "artenether", "SRO", "albendazole", "mebendazole", "vita100", "vita200", "paracetamol", "MILD", "kit")
 
 ##Calculs des ruptures
 getRupture <- function(x) {
