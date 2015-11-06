@@ -7,7 +7,7 @@
 ## Checking if the file is in the correct folder
    ############ A écrire
 
-data <- read.csv2("../data/datanewepi.csv") #########(1) change the name of csv
+data <- read.csv2("../data/test1.csv") #########(1) change the name of csv
 # csv2 is used because French annotation uses ";" as separator because "," is used for decimals (instead of ".").
                                 
 ## data cleanning

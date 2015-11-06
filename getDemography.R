@@ -18,10 +18,10 @@ getDemography <- function(x) {
 
     ageGroup <- x[which(x$ageCategory == a),]
     
-    nbAgeGroupFemale <- sum(ageGroup$sexe == "Feminin")
+    nbAgeGroupFemale <- sum(ageGroup$sexe == 1)
     demographyPart <- c(demographyPart, nbAgeGroupFemale)
 
-    nbAgeGroupMale <-  sum(ageGroup$sexe == "Masculin")
+    nbAgeGroupMale <-  sum(ageGroup$sexe == 2)
     demographyPart <- c(demographyPart, nbAgeGroupMale)
 
     nbAgeGroupTotal <- nbAgeGroupMale + nbAgeGroupFemale
