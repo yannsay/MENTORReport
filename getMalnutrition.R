@@ -11,19 +11,19 @@ getMalnutrition <- function(x){
   ageGroup <- x[which(x$ageCategory5 == 0),]
   
   #Total MUAC Vert
-  totalMUACVert <- sum(ageGroup$MUAC == 1)
+  totalMUACVert <- sum(ageGroup$MUAC == "Vert")
   malnutritionPart <- c(malnutritionPart, totalMUACVert)
   
   #Total MUAC Jaune
-  totalMUACJaune <- sum(ageGroup$MUAC == 2)
+  totalMUACJaune <- sum(ageGroup$MUAC == "Jaune")
   malnutritionPart <- c(malnutritionPart, totalMUACJaune)
   
   #Total MUAC Orange
-  totalMUACOrange <- sum(ageGroup$MUAC == 3)
+  totalMUACOrange <- sum(ageGroup$MUAC == "Orange")
   malnutritionPart <- c(malnutritionPart, totalMUACOrange)
   
   #Total of MUAC Rouge
-  totalMUACRouge <- sum(ageGroup$MUAC == 4)
+  totalMUACRouge <- sum(ageGroup$MUAC == "Rouge")
   malnutritionPart <- c(malnutritionPart, totalMUACRouge)
   
   #Total of Oedeme

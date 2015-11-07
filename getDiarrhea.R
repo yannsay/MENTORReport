@@ -19,7 +19,7 @@ getDiarrhea <- function(x){
     
     ageGroup <- x[which(x$ageCategory5 == a),]
     
-    nbDiarrhea <- sum(ageGroup$Diarrhee == 1)
+    nbDiarrhea <- sum(ageGroup$diarrhee == 1)
     diarrheaPart <- c(diarrheaPart, nbDiarrhea)
     
     totalDiarrhea <- totalDiarrhea + nbDiarrhea
@@ -59,4 +59,4 @@ getDiarrhea <- function(x){
   
 }
 
-namesDiarrhea <- c("Total Diarrhées pour < 5 ans", "Total Diarrhées pour > 5 ans", "Total Diarrhées", "Total ORS distribués", "Total Patients ayant reÃ§u ORS", "Nb de patients avec diarrhée ayant reçu ORS", "% de patients avec diarrhée traités correctement")
+namesDiarrhea <- c("Total Diarrhées pour < 5 ans", "Total Diarrhées pour > 5 ans", "Total Diarrhées", "Total SRO distribués", "Total Patients ayant reçu SRO", "Nb de patients avec diarrhée ayant reçu SRO", "% de patients avec diarrhée traités correctement")

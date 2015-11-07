@@ -9,19 +9,19 @@ getPaluTreatment <- function(x){
   
   
   #Total Blister of Coartem 05 - 15 given
-  totalCoartem515 <- sum(x$Coartem0515 == 1)
+  totalCoartem515 <- sum(x$coartem0515 == 1)
   treatmentPart <- c(treatmentPart, totalCoartem515)
   
   #Total Blister of Coartem 15 - 25 given
-  totalCoartem1525 <- sum(x$Coartem1525 == 1)
+  totalCoartem1525 <- sum(x$coartem1525 == 1)
   treatmentPart <- c(treatmentPart, totalCoartem1525)
   
   #Total Blister of Coartem 25 - 35 given
-  totalCoartem2535 <- sum(x$Coartem2535 == 1)
+  totalCoartem2535 <- sum(x$coartem2535 == 1)
   treatmentPart <- c(treatmentPart, totalCoartem2535)
   
   #Total Blister of Coartem 35 + given
-  totalCoartem35 <- sum(x$Coartem35 == 1)
+  totalCoartem35 <- sum(x$coartem35 == 1)
   treatmentPart <- c(treatmentPart, totalCoartem35)
   
   #Total Blister of Coartem given
@@ -44,7 +44,7 @@ getPaluTreatment <- function(x){
   treatmentPart <- c(treatmentPart, totalPatientArtenether)
   
   #Total patients receiving treatment (i.e. only counting 1 patient if the patient received Coartem and Artenether)
-  TotalPatientRecevingTreatment <- sum(x$patientReceivedMalariaTreatment)
+  TotalPatientRecevingTreatment <- sum(x$traitementPaluRecu)
   treatmentPart <- c(treatmentPart, TotalPatientRecevingTreatment)
   
 #   #Total Patients with TDR + and receiving treatment
