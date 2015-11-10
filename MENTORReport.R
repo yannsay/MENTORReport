@@ -1,10 +1,10 @@
-source("getData.R")
-source("getDemography.R")
-source("getPalu.R")
-source("getPaluTreatment.R")
-source("getDiarrhea.R")
-source("getMalnutrition.R")
-source("getRupture.R")
+source("MENTORReport/getData.R")
+source("MENTORReport/getDemography.R")
+source("MENTORReport/getPalu.R")
+source("MENTORReport/getPaluTreatment.R")
+source("MENTORReport/getDiarrhea.R")
+source("MENTORReport/getMalnutrition.R")
+source("MENTORReport/getRupture.R")
 
 createLine <- function(x){
   lineReport <<- c()
@@ -28,17 +28,17 @@ MENTORReport <- data.frame()
 createLine(data)
 
 ##MENTOR Report by Village
-byVillage <- split(data, data$VillageASC)
+byVillage <- split(data, data$villageASC)
 lapply(byVillage, createLine)
 
 #Monthly MENTOR 
 ## Monthly Total Report
-monthGroup <- split(data, data$monthCategory)
+monthGroup <- split(data, data$mois)
 lapply(monthGroup, createLine)
 
 ## Monthly Report by Village
-interaction(data$monthCategory, data$VillageASC)
-monthByVillage<- split(data, list(data$monthCategory, data$VillageASC))
+interaction(data$mois, data$villageASC)
+monthByVillage<- split(data, list(data$mois, data$villageASC))
 lapply(monthByVillage, createLine)
 
 columnsNames <- c(namesDemography, namesPalu, namesPaluTreatment, namesDiarrhea, namesMalnutrition, namesRupture)
@@ -50,6 +50,6 @@ MENTORReport <- cbind(MENTORReport, rowTitle)
 MENTORReport <-MENTORReport[, c(ncol(MENTORReport),seq_along(columnsNames))]
 
 print(MENTORReport)
-write.csv2(MENTORReport, "../data/MENTORReporttest.csv")
-write.csv2(data, "../data/data for analysis.csv")
+write.csv2(MENTORReport, "../rapport/MENTORReport.csv")
+write.csv2(data, "../rapport/data for analysis.csv")
 cat("Rapport fini")

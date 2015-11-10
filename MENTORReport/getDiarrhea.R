@@ -12,14 +12,14 @@ getDiarrhea <- function(x){
   a <- 0 
   
   #Dummy value for the loop length (length of the age category without NA)
-  NbCategory <- unique(ageCategory5[!is.na(ageCategory5)]) + 1
+  NbCategory <- unique(categorieAge5[!is.na(categorieAge5)]) + 1
   
   #calculing number of TDR+/- per category
   for (i in seq_along(NbCategory)) { 
     
-    ageGroup <- x[which(x$ageCategory5 == a),]
+    ageGroup <- x[which(x$categorieAge5 == a),]
     
-    nbDiarrhea <- sum(ageGroup$Diarrhee == 1)
+    nbDiarrhea <- sum(ageGroup$diarrhee == 1, na.rm = TRUE)
     diarrheaPart <- c(diarrheaPart, nbDiarrhea)
     
     totalDiarrhea <- totalDiarrhea + nbDiarrhea
@@ -33,25 +33,25 @@ getDiarrhea <- function(x){
   #Total of SRO distributed
   totalSRO <- 0
   
-  dataSROA <- x[which(x$SRO < 77),] #1. Summing the Artenether that have been written by number
-  totalSROA <- sum(dataSROA$SRO) 
+  dataSROA <- x[which(x$SRO < 77),] #1. Summing the SRO that have been written by number
+  totalSROA <- sum(dataSROA$SRO, na.rm = TRUE) 
   
   dataSROB <- x[which(x$SRO == 77),]
-  totalSROB <- nrow(dataSROB) * 3 #2. Looking for the 77s (Artenether given but number given is unknown)
+  totalSROB <- nrow(dataSROB) * 2 #2. Looking for the 77s (SRO given but number given is unknown)
   
-  totalSRO <- sum(totalSROA, totalSROB)
+  totalSRO <- sum(totalSROA, totalSROB, na.rm = TRUE)
   diarrheaPart <- c(diarrheaPart, totalSRO)
   
   #Total Patients given SRO 
-  totalPatientSRO <- sum(x$SRO > 0 & x$SRO < 88) #77 means SRO given but the number is unknown, 88 is the stockout code
+  totalPatientSRO <- sum(x$SRO > 0 & x$SRO < 88, na.rm = TRUE) #77 means SRO given but the number is unknown, 88 is the stockout code
   diarrheaPart <- c(diarrheaPart, totalPatientSRO)
   
   #Total Correct Diarrhea Treated
-  totalCorrectDiarrheaTreated <- sum(x$correctDiarrheaTreated)
-  diarrheaPart <- c(diarrheaPart, totalCorrectDiarrheaTreated)
+  totalDiarrheeTraiteCorrectement <- sum(x$diarrheeTraiteCorrectement, na.rm = TRUE)
+  diarrheaPart <- c(diarrheaPart, totalDiarrheeTraiteCorrectement)
   
   #Percentage of patient with Diarrhea treated correctly
-  percentageCorrectTreatedDiarrheaPatient <- totalCorrectDiarrheaTreated / totalDiarrhea * 100
+  percentageCorrectTreatedDiarrheaPatient <- totalDiarrheeTraiteCorrectement / totalDiarrhea * 100
   diarrheaPart <- c(diarrheaPart, percentageCorrectTreatedDiarrheaPatient)
   
   #Sending the Diarrhea information to the report line
@@ -59,4 +59,4 @@ getDiarrhea <- function(x){
   
 }
 
-namesDiarrhea <- c("Total Diarrhées pour < 5 ans", "Total Diarrhées pour > 5 ans", "Total Diarrhées", "Total ORS distribués", "Total Patients ayant reÃ§u ORS", "Nb de patients avec diarrhée ayant reçu ORS", "% de patients avec diarrhée traités correctement")
+namesDiarrhea <- c("Total Diarrhées pour < 5 ans", "Total Diarrhées pour > 5 ans", "Total Diarrhées", "Total SRO distribués", "Total Patients ayant reçu SRO", "Nb de patients avec diarrhée ayant reçu SRO", "% de patients avec diarrhée traités correctement")

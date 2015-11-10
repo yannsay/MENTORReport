@@ -14,17 +14,17 @@ getPalu <- function(x){
   a <- 0 
   
   #Dummy value for the loop length (length of the age category without NA)
-  NbCategory <- unique(ageCategory5[!is.na(ageCategory5)])
+  NbCategory <- unique(categorieAge5[!is.na(categorieAge5)])
   
   #calculing number of TDR+/- per category
   for (i in seq_along(NbCategory)) { 
     
-    ageGroup <- x[which(x$ageCategory5 == a),]
+    ageGroup <- x[which(x$categorieAge5 == a),]
     
-    nbTDR1 <- sum(ageGroup$TDR == 1)
+    nbTDR1 <- sum(ageGroup$TDR == 1, na.rm = TRUE)
     paluPart <- c(paluPart, nbTDR1)
     
-    nbTDR0 <-  sum(ageGroup$TDR == 0)
+    nbTDR0 <-  sum(ageGroup$TDR == 0, na.rm = TRUE)
     paluPart <- c(paluPart, nbTDR0)
     
     nbTotalTDR <- nbTDR0 + nbTDR1

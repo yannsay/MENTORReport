@@ -10,18 +10,18 @@ getDemography <- function(x) {
   totalMale <- 0
   
   #Dummy value for the selection
-  nbCategory <- length(ageRangeDemo) + 1  # + 1 because there are just 3 groups, it needs 4 groups, 0-4; 5-17; 18-59; 60+
+  nbCategorie <- length(ageRangeDemo) + 1  # + 1 because there are just 3 groups, it needs 4 groups, 0-4; 5-17; 18-59; 60+
   a <- 0
   
   #calculing number of female/male per category
-  for (i in 1:nbCategory) { 
+  for (i in 1:nbCategorie) { 
 
-    ageGroup <- x[which(x$ageCategory == a),]
+    ageGroup <- x[which(x$categorieAge == a),]
     
-    nbAgeGroupFemale <- sum(ageGroup$Sexe == 1)
+    nbAgeGroupFemale <- sum(ageGroup$sexe == 1, na.rm = TRUE)
     demographyPart <- c(demographyPart, nbAgeGroupFemale)
 
-    nbAgeGroupMale <-  sum(ageGroup$Sexe == 2)
+    nbAgeGroupMale <-  sum(ageGroup$sexe == 2, na.rm = TRUE)
     demographyPart <- c(demographyPart, nbAgeGroupMale)
 
     nbAgeGroupTotal <- nbAgeGroupMale + nbAgeGroupFemale

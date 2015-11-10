@@ -8,38 +8,38 @@ getMalnutrition <- function(x){
   malnutritionPart <- c()
 
   #Selection of the patients < 5 years old
-  ageGroup <- x[which(x$ageCategory5 == 0),]
+  ageGroup <- x[which(x$categorieAge5 == 0),]
   
   #Total MUAC Vert
-  totalMUACVert <- sum(ageGroup$MUAC == 1)
+  totalMUACVert <- sum(ageGroup$MUAC == "Vert", na.rm = TRUE)
   malnutritionPart <- c(malnutritionPart, totalMUACVert)
   
   #Total MUAC Jaune
-  totalMUACJaune <- sum(ageGroup$MUAC == 2)
+  totalMUACJaune <- sum(ageGroup$MUAC == "Jaune", na.rm = TRUE)
   malnutritionPart <- c(malnutritionPart, totalMUACJaune)
   
   #Total MUAC Orange
-  totalMUACOrange <- sum(ageGroup$MUAC == 3)
+  totalMUACOrange <- sum(ageGroup$MUAC == "Orange", na.rm = TRUE)
   malnutritionPart <- c(malnutritionPart, totalMUACOrange)
   
   #Total of MUAC Rouge
-  totalMUACRouge <- sum(ageGroup$MUAC == 4)
+  totalMUACRouge <- sum(ageGroup$MUAC == "Rouge", na.rm = TRUE)
   malnutritionPart <- c(malnutritionPart, totalMUACRouge)
   
   #Total of Oedeme
-  totalOedeme <- sum(ageGroup$Oedme == 1)
+  totalOedeme <- sum(ageGroup$Oedme == 1, na.rm = TRUE)
   malnutritionPart <- c(malnutritionPart, totalOedeme)
   
   #Total of Severe Malnutrition
-  totalSevereMalnutrition <- sum(ageGroup$MUAC == 4)
+  totalSevereMalnutrition <- sum(ageGroup$MUAC == "Rouge", na.rm = TRUE)
   malnutritionPart <- c(malnutritionPart, totalSevereMalnutrition)
   
   #Total Correct Malnutrition Treated
-  totalCorrectMalnutritionTreated <- sum(ageGroup$correctMalnutritionTreated)
-  malnutritionPart <- c(malnutritionPart, totalCorrectMalnutritionTreated)
+  totalMalnutritionTraiteCorrectement <- sum(ageGroup$malnutritionTraiteCorrectement, na.rm = TRUE)
+  malnutritionPart <- c(malnutritionPart, totalMalnutritionTraiteCorrectement)
     
   #Percentage of patient with Severe Malnutrition treated correctly
-  percentageCorrectTreatedMalnutritionPatient <- totalCorrectMalnutritionTreated / totalMUACRouge * 100
+  percentageCorrectTreatedMalnutritionPatient <- totalMalnutritionTraiteCorrectement / totalMUACRouge * 100
   malnutritionPart <- c(malnutritionPart, percentageCorrectTreatedMalnutritionPatient)
   
   #Sending the Diarrhea information to the report line
