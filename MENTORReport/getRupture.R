@@ -63,7 +63,7 @@ rupture <- function(x, medicament){
 #Fonction pour vérifier les ruptures pour chaque médicaments
 ##Variables pour le rapport
 rupturePart <- c()
-listeMedicament <- c("coartem0515", "coartem1525", "coartem2535", "coartem35", "artenether", "SRO", "albendazole", "mebendazole", "vita100", "vita200", "paracetamol", "MILD", "kit")
+listeMedicament <- c("coartem0515", "coartem1525", "coartem2535", "coartem35", "artenether", "SRO", "albendazole", "mebendazole", "vita100", "vita200", "paracetamol", "fansidar", "FAF", "MILD", "kit")
 
 ##Calculs des ruptures
 getRupture <- function(x) {

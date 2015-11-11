@@ -6,6 +6,7 @@ source("MENTORReport/getDiarrhea.R")
 source("MENTORReport/getMalnutrition.R")
 source("MENTORReport/getRupture.R")
 
+
 createLine <- function(x){
   lineReport <<- c()
   
@@ -15,7 +16,7 @@ createLine <- function(x){
   getDiarrhea(x)
   getMalnutrition(x)
   getRupture(x)
-  
+
   MENTORReport <<- rbind(MENTORReport, lineReport)
   
 }

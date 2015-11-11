@@ -114,3 +114,28 @@ data <- cbind(data, diarrheeTraiteCorrectement)
 ## Creating variable: Patient with Severe Malnutrition and received Transfert for Malnutrition (i.e correct treatment )
 malnutritionTraiteCorrectement <- data$MUAC == 4 & data$transfertDemande == TRUE
 data <- cbind(data, malnutritionTraiteCorrectement)  
+
+#Computing data from the CPN
+## Computing the fansidar
+fansidar <- c()
+for (i in seq_len(nrow(data))){
+  sommefansidar <- 0
+  ifelse(data$CPN1fansidar[i] == 77, sommefansidar <- sommefansidar + 30, sommefansidar <- sommefansidar + data$CPN1fansidar[i])
+  ifelse(data$CPN2fansidar[i] == 77, sommefansidar <- sommefansidar + 30, sommefansidar <- sommefansidar + data$CPN2fansidar[i])
+  ifelse(data$CPN3fansidar[i] == 77, sommefansidar <- sommefansidar + 30, sommefansidar <- sommefansidar + data$CPN3fansidar[i])
+  ifelse(data$CPN4fansidar[i] == 77, sommefansidar <- sommefansidar + 30, sommefansidar <- sommefansidar + data$CPN4fansidar[i])
+  fansidar <<- c(fansidar, sommefansidar)
+}
+data <- cbind(data, fansidar) 
+
+##Computing the FAF
+FAF <- c()
+for (i in seq_len(nrow(data))){
+  sommeFAF <- 0
+  ifelse(data$CPN1FAF[i] == 77, sommeFAF <- sommeFAF + 30, sommeFAF <- sommeFAF + data$CPN1FAF[i])
+  ifelse(data$CPN2FAF[i] == 77, sommeFAF <- sommeFAF + 30, sommeFAF <- sommeFAF + data$CPN2FAF[i])
+  ifelse(data$CPN3FAF[i] == 77, sommeFAF <- sommeFAF + 30, sommeFAF <- sommeFAF + data$CPN3FAF[i])
+  ifelse(data$CPN4FAF[i] == 77, sommeFAF <- sommeFAF + 30, sommeFAF <- sommeFAF + data$CPN4FAF[i])
+  FAF <<- c(FAF, sommeFAF)
+}
+data <- cbind(data, FAF) 

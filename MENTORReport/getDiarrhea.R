@@ -14,7 +14,7 @@ getDiarrhea <- function(x){
   #Dummy value for the loop length (length of the age category without NA)
   NbCategory <- unique(categorieAge5[!is.na(categorieAge5)]) + 1
   
-  #calculing number of TDR+/- per category
+  #calculing number of diarrhea per category
   for (i in seq_along(NbCategory)) { 
     
     ageGroup <- x[which(x$categorieAge5 == a),]
