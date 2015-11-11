@@ -1,10 +1,11 @@
-source("getData.R")
-source("getDemography.R")
-source("getPalu.R")
-source("getPaluTreatment.R")
-source("getDiarrhea.R")
-source("getMalnutrition.R")
-source("getRupture.R")
+source("MENTORReport/getData.R")
+source("MENTORReport/getDemography.R")
+source("MENTORReport/getPalu.R")
+source("MENTORReport/getPaluTreatment.R")
+source("MENTORReport/getDiarrhea.R")
+source("MENTORReport/getMalnutrition.R")
+source("MENTORReport/getRupture.R")
+
 
 createLine <- function(x){
   lineReport <<- c()
@@ -15,7 +16,7 @@ createLine <- function(x){
   getDiarrhea(x)
   getMalnutrition(x)
   getRupture(x)
-  
+
   MENTORReport <<- rbind(MENTORReport, lineReport)
   
 }
@@ -50,6 +51,6 @@ MENTORReport <- cbind(MENTORReport, rowTitle)
 MENTORReport <-MENTORReport[, c(ncol(MENTORReport),seq_along(columnsNames))]
 
 print(MENTORReport)
-write.csv2(MENTORReport, "../data/MENTORReport.csv")
-write.csv2(data, "../data/data for analysis.csv")
+write.csv2(MENTORReport, "../rapport/MENTORReport.csv")
+write.csv2(data, "../rapport/data for analysis.csv")
 cat("Rapport fini")
